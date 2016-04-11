@@ -17,3 +17,4 @@ rules:
   no-underscore-dangle: 0
   consistent-return: 0
   react/jsx-uses-react: 1
+  no-loop-func: 0

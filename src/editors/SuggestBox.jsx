@@ -45,6 +45,7 @@ var SuggestBoxEditor = React.createClass({
     }),
     onChange: React.PropTypes.func.isRequired,
     onLabelChange: React.PropTypes.func,
+    onMetadataChange: React.PropTypes.func,
     value: React.PropTypes.any,
     defaultLabel: React.PropTypes.string,
     label: React.PropTypes.string,
@@ -218,9 +219,12 @@ var SuggestBoxEditor = React.createClass({
   },
 
   _selectOption: function (option) {
-    this.props.onChange(option.id);
-    if (typeof this.props.onLabelChange === 'function') {
+    this.props.onChange(option.id, option);
+    if (this.props.onLabelChange) {
       this.props.onLabelChange(option.label);
+    }
+    if (this.props.onMetadataChange) {
+      this.props.onMetadataChange(option.metadata);
     }
     this.refs.input.getDOMNode().select();
   },
